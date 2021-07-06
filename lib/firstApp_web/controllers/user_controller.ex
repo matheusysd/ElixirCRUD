@@ -7,7 +7,7 @@ defmodule FirstAppWeb.UserController do
   def index(conn, _params) do
     users = Accounts.list_users()
     users_map = Enum.map(users, fn user -> Map.from_struct(user) end)
-    users_name = Enum.map(users_map, fn user -> Map.take(user, [:name, :id, :age]) end)
+    users_name = Enum.map(users_map, fn user -> Map.take(user, [:name, :id, :email]) end)
     render(conn, "list.json", %{data: users_name})
   end
 
@@ -38,7 +38,7 @@ defmodule FirstAppWeb.UserController do
     # Transformando estrutura em map
     user_map = Map.from_struct(user)
     # Extraindo as chaves que quero usar
-    user_info = Map.take(user_map, [:name, :id])
+    user_info = Map.take(user_map, [:name, :id, :email])
     IO.inspect(user_info)
     render(conn, "show.json", %{user: user_info})
   end
