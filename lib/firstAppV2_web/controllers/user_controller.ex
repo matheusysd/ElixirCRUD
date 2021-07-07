@@ -7,7 +7,8 @@ defmodule FirstAppV2Web.UserController do
   def get(conn, _params) do
     users = Accounts.get_users()
     IO.inspect(users)
-    render(conn, "getUsers.json", %{data: "é isso ai"})
+    users_infos = Enum.map(users, fn user -> Map.take(user, [:name, :id, :age, :email]) end)
+    render(conn, "getUsers.json", %{data: users_infos})
   end
 
   def post(conn, params) do
