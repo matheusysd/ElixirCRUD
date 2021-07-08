@@ -4,14 +4,14 @@ defmodule FirstAppV2Web.UserController do
 
   alias FirstAppV2.Accounts
 
-  def get(conn, _params) do
+  def get_users(conn, _params) do
     users = Accounts.get_users()
     IO.inspect(users)
     users_infos = Enum.map(users, fn user -> Map.take(user, [:name, :id, :age, :email]) end)
-    render(conn, "getUsers.json", %{data: users_infos})
+    render(conn, "show.json", list_users: users_infos)
   end
 
-  def post(conn, params) do
+  def create_user(conn, params) do
     case Accounts.create_user(params) do
       {:ok, user} ->
         user_map = Map.from_struct(user)
@@ -24,4 +24,12 @@ defmodule FirstAppV2Web.UserController do
         render(conn, "error.json", %{message: "Erro ao criar usuário"})
     end
   end
+
+  def get_user(conn, %{"id" => id}) do
+    IO.inspect(id)
+    user = Accounts.get_user(id)
+    user_info = Map.take(user, [:name, :id, :age, :email])
+    render(conn, "show.json", user: user_info)
+  end
+
 end
