@@ -40,6 +40,17 @@ defmodule FirstAppV2Web.UserController do
         render(conn, "success.json", %{message: "Usuário deletado com sucesso."})
       {:error, _error} ->
         render(conn, "error.json", %{message: "Ocorreu um erro ao deletar o usuário."})
-      end
+    end
+  end
+
+  def update_user(conn, %{"id" => id, "user" => new_user_params}) do
+    user = Accounts.get_user(id)
+    case Accounts.update_user(user, new_user_params) do
+      {:ok, _user} ->
+        render(conn, "success.json", %{message: "Usuário #{user.id} alterado com sucesso"})
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn."error.json", %{message: changeset})
+    end
   end
 end
