@@ -14,6 +14,7 @@ defmodule FirstAppV2Web.Router do
     post "/create", UserController, :create_user
     get "/user/:id", UserController, :get_user
     delete "/delete", UserController, :delete_user
+    put "/user", UserController, :update_user
   end
 
   # Enables LiveDashboard only for development
