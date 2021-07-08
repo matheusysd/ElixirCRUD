@@ -20,4 +20,10 @@ defmodule FirstAppV2.Accounts do
   def delete_user(%User{} = user) do
     Repo.delete(user)
   end
+
+  def update_user(%User{} = user, params) do
+    user
+    |> User.changeset(params)
+    |> Repo.update()
+  end
 end
