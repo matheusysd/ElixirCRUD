@@ -13,7 +13,3 @@ defmodule FirstAppV2Web.UserView do
     %{message: message}
   end
 end
-
-
-# def render(list_users)
-# def render(%{user: user})
