@@ -16,4 +16,8 @@ defmodule FirstAppV2.Accounts do
   def get_user(id) do
     Repo.get!(User, id)
   end
+
+  def delete_user(%User{} = user) do
+    Repo.delete(user)
+  end
 end
