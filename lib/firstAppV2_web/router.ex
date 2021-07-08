@@ -10,9 +10,9 @@ defmodule FirstAppV2Web.Router do
   end
 
   scope "/", FirstAppV2Web do
-    get "/list", UserController, :getUsers
-    post "/create", UserController, :createUser
-    get "/user/:id", UserController, :getUser
+    get "/list", UserController, :get_users
+    post "/create", UserController, :create_user
+    get "/user/:id", UserController, :get_user
   end
 
   # Enables LiveDashboard only for development
