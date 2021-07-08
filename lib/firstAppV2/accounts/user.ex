@@ -1,9 +1,9 @@
 defmodule FirstAppV2.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
-  @derive {Jason.Encoder, except: [:__meta__]}
-  schema "users" do
-    field :name, :string
+  @derive {Jason.Encoder, except: [:__meta__]} #Jason evita o uso de Map.from_struct
+  schema "users" do #Criação de campos
+    field :name, :string #campo, nome do campo, tipo do campo
     field :email, :string
     field :age, :integer
     timestamps()

@@ -1,0 +1,3 @@
+- [] Entender como funciona render_many
+- [] Como lidar com erros de uma forma genérica
+- [] Validar quando não acha usuário

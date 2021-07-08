@@ -9,8 +9,8 @@ defmodule FirstAppV2Web.Router do
     pipe_through :api
   end
 
-  scope "/", FirstAppV2Web do
-    get "/list", UserController, :get_users
+  scope "/", FirstAppV2Web do #criação de rotas a partir de '/'
+    get "/list", UserController, :get_users #metodo http, arquivo do controller, nome da função
     post "/create", UserController, :create_user
     get "/user/:id", UserController, :get_user
     delete "/delete", UserController, :delete_user

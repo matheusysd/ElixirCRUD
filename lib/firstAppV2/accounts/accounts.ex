@@ -1,7 +1,7 @@
 defmodule FirstAppV2.Accounts do
   import Ecto.Query, warn: false
-  alias FirstAppV2.Repo
-  alias FirstAppV2.Accounts.User
+  alias FirstAppV2.Repo #Uso do repo para fazer as querys
+  alias FirstAppV2.Accounts.User #Instância(?) para mostrar qual schema está buscando (?)
 
   def get_users do
     Repo.all(User)
